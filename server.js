@@ -46,7 +46,7 @@ io.on('connection',function(socket) {
         }
 
     })
-    socket.on('left chat',function(user){
+    socket.on('left',function(user){
         io.emit('remove',user);
     })
     socket.on('online',function(user){

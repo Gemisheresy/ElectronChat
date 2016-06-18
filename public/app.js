@@ -40,6 +40,6 @@ socket.on('new',function(){
     socket.emit('online',user);
 })
 var discon = function(){
-    socket.emit('left chat',user);
+    socket.emit('left',user);
 };
 
