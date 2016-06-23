@@ -19,10 +19,11 @@ io.on('connection',function(socket) {
     socket.on('first connect',function(user){
         usersArray.push(user);
         socket.broadcast.emit('new');
-        io.emit('users',user)
+        io.emit('users',user);
         for (let i = 0; i < msgs.length;i++){
-            io.emit('message',msgs[i])
+            io.emit('messageLogs',msgs[i])
         }
+        io.emit('newComer');
     });
 
 

@@ -2,6 +2,7 @@
 var socket = io();
 var user ={};
 var usersArray = [];
+user.newComer= true;
 
 
 
@@ -30,6 +31,14 @@ socket.on('users',function(sentUser){
 // adds messages to the messages
 socket.on('message',function(msg){
     $('#messages').append($('<li>').text(msg));
+})
+socket.on('messageLogs',function(msg){
+    if (user.newComer === true){
+        $('#messages').append($('<li>').text(msg));
+    }
+});
+socket.on('newComer',function(){
+    user.newComer = false;
 })
 
 // when a user disconnects
