@@ -1,69 +1,19 @@
 <!doctype html>
-<html>
+<html ng-app="chat">
     <head>
         <title>Socket test</title>
-        <style>
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body{
-                font: 13px Helvetica, Arial;
-            }
-            form {
-                background: black;
-                padding: 3px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-            form input{
-                border: 0;
-                padding: 10px;
-                width: 90%;
-                margin-right: .5%;
-            }
-            form button{
-                width: 9%;
-                background: dodgerblue;
-                border: none;
-                padding: 10px;
-            }
-            #userslist{
-                float: left;
-            }
-            #messages {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            #messages li{
-                padding: 5px 10px;
-            }
-            #messages li:nth-child(odd){
-                background: #eee;
-            }
-            #userslist{
-                border-style: ridge;
-                width: 100px;
-                height:100vh;
-                background-color: white;
-            }
-        </style>
+        <link rel='stylesheet' type="text/css" href="public/css/stylesheet.css">
         <script src="/socket.io/socket.io.js"></script>
         <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
-
+        <script src="/angular/angular.js"></script>
+        <script src="public/js/app.js"></script>
+        <script src="public/js/userService.js"></script>
+        <script src="public/js/messagesServices.js"></script>
+        <script src="public/js/onlineServices.js"></script>
+        <script src="public/js/mainDirective.js"></script>
+        <script src="public/js/socketService.js"></script>
     </head>
-    <body onbeforeunload="discon()">
-    <aside id="userslist">
-        <ul id="users">
-        </ul>
-    </aside>
-    <ul id="messages"></ul>
-    <form action="">
-        <input id="m" autocomplete="off"/><button>Send</button>
-    </form>
-    <script src="public/app.js"></script>
+    <body id="mainBody">
+        <main-body></main-body>
     </body>
 </html>

@@ -6,7 +6,7 @@ const io = require('socket.io')(http);
 let msgs = [];
 let usersArray = [];
 app.use('/public',express.static(`${__dirname}/public`))
-
+app.use('/angular',express.static(`${__dirname}/node_modules/angular`))
 app.get('/',function(req,res){
     res.sendFile(`${__dirname}/index.html`);
 });
@@ -14,7 +14,9 @@ app.get('/',function(req,res){
 
 io.on('connection',function(socket) {
 
-
+    socket.on('userTest',function(){
+        io.emit('userEntered')
+    })
 //when a user connects to the app and returns past messages
     socket.on('first connect',function(user){
         usersArray.push(user);
@@ -31,7 +33,6 @@ io.on('connection',function(socket) {
     socket.on('message', function (msg) {
         io.emit('message',msg);
         msgs.push(msg);
-        console.log(msgs);
     });
     socket.on('disconnect',function(){
         io.emit('left')
